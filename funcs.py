@@ -103,6 +103,7 @@ def amortization_table(interest_rate, years, principal, yearly_tax=0,
     total_period_payment = round( payment_details.loc[0, "Period_Payment"] - yearly_tax/12 - maintenance_fee , 2 )
     
     payment_summary = pd.concat([payment_details, payment_info], axis=1)
+    df['Cum_Interest'] = df['Interest'].cumsum()
     return df, payment_summary, total_period_payment
 
 
